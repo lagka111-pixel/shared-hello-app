@@ -1,0 +1,141 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --text-color: #ffffff;
+    --input-bg: rgba(255, 255, 255, 0.2);
+    --input-focus: rgba(255, 255, 255, 0.4);
+    --accent: #ff7eb3;
+    --accent-hover: #ff758c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Animated Orbs */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    animation: float 10s infinite alternate ease-in-out;
+}
+
+body::before {
+    background: #ff7eb3;
+    top: 10%;
+    left: 20%;
+}
+
+body::after {
+    background: #4facfe;
+    bottom: 10%;
+    right: 20%;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(50px) scale(1.1); }
+}
+
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: var(--glass-shadow);
+    width: 90%;
+    max-width: 500px;
+    transition: transform 0.3s ease;
+}
+
+.glass-container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    min-height: 2.4rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    /* Prevent user selection for better feeling */
+    user-select: none;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    position: relative;
+}
+
+input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+    background: var(--input-focus);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    background: var(--accent);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 126, 179, 0.4);
+}
+
+button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 126, 179, 0.6);
+}
+
+button:active {
+    transform: translateY(1px);
+}
